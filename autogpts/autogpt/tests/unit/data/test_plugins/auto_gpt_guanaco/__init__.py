@@ -1,4 +1,5 @@
 """This is the Test plugin for AutoGPT."""
+
 from typing import Any, Dict, List, Optional, Tuple, TypeVar
 
 from auto_gpt_plugin_template import AutoGPTPluginTemplate

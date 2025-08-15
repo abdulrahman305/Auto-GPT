@@ -1,19 +1,17 @@
 """Text processing functions"""
+
 import json
 import logging
 import math
 from typing import Iterator, Optional, TypeVar
 
 import spacy
-
 from autogpt.config import Config
 from autogpt.core.prompting import ChatPrompt
-from autogpt.core.resource.model_providers import (
-    ChatMessage,
-    ChatModelProvider,
-    ChatModelResponse,
-    ModelTokenizer,
-)
+from autogpt.core.resource.model_providers import (ChatMessage,
+                                                   ChatModelProvider,
+                                                   ChatModelResponse,
+                                                   ModelTokenizer)
 
 logger = logging.getLogger(__name__)
 

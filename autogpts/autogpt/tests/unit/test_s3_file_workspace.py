@@ -4,9 +4,9 @@ from pathlib import Path
 
 import pytest
 import pytest_asyncio
+from autogpt.file_workspace.s3 import (S3FileWorkspace,
+                                       S3FileWorkspaceConfiguration)
 from botocore.exceptions import ClientError
-
-from autogpt.file_workspace.s3 import S3FileWorkspace, S3FileWorkspaceConfiguration
 
 if not os.getenv("S3_ENDPOINT_URL") and not os.getenv("AWS_ACCESS_KEY_ID"):
     pytest.skip("S3 environment variables are not set", allow_module_level=True)

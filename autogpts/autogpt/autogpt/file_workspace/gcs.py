@@ -2,6 +2,7 @@
 The GCSWorkspace class provides an interface for interacting with a file workspace, and
 stores the files in a Google Cloud Storage bucket.
 """
+
 from __future__ import annotations
 
 import inspect
@@ -9,10 +10,9 @@ import logging
 from io import IOBase
 from pathlib import Path
 
+from autogpt.core.configuration.schema import UserConfigurable
 from google.cloud import storage
 from google.cloud.exceptions import NotFound
-
-from autogpt.core.configuration.schema import UserConfigurable
 
 from .base import FileWorkspace, FileWorkspaceConfiguration
 

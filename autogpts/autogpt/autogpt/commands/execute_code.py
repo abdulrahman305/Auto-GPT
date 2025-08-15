@@ -7,19 +7,16 @@ from pathlib import Path
 from tempfile import NamedTemporaryFile
 
 import docker
-from docker.errors import DockerException, ImageNotFound, NotFound
-from docker.models.containers import Container as DockerContainer
-
 from autogpt.agents.agent import Agent
-from autogpt.agents.utils.exceptions import (
-    CodeExecutionError,
-    CommandExecutionError,
-    InvalidArgumentError,
-    OperationNotAllowedError,
-)
+from autogpt.agents.utils.exceptions import (CodeExecutionError,
+                                             CommandExecutionError,
+                                             InvalidArgumentError,
+                                             OperationNotAllowedError)
 from autogpt.command_decorator import command
 from autogpt.config import Config
 from autogpt.core.utils.json_schema import JSONSchema
+from docker.errors import DockerException, ImageNotFound, NotFound
+from docker.models.containers import Container as DockerContainer
 
 from .decorators import sanitize_path_arg
 

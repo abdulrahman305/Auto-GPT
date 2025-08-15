@@ -10,47 +10,31 @@ if TYPE_CHECKING:
     from autogpt.config import Config
     from autogpt.models.command_registry import CommandRegistry
 
-from pydantic import Field
-
 from autogpt.core.configuration import Configurable
 from autogpt.core.prompting import ChatPrompt
-from autogpt.core.resource.model_providers import (
-    AssistantChatMessage,
-    ChatMessage,
-    ChatModelProvider,
-)
+from autogpt.core.resource.model_providers import (AssistantChatMessage,
+                                                   ChatMessage,
+                                                   ChatModelProvider)
 from autogpt.llm.api_manager import ApiManager
-from autogpt.logs.log_cycle import (
-    CURRENT_CONTEXT_FILE_NAME,
-    NEXT_ACTION_FILE_NAME,
-    USER_INPUT_FILE_NAME,
-    LogCycleHandler,
-)
+from autogpt.logs.log_cycle import (CURRENT_CONTEXT_FILE_NAME,
+                                    NEXT_ACTION_FILE_NAME,
+                                    USER_INPUT_FILE_NAME, LogCycleHandler)
 from autogpt.logs.utils import fmt_kwargs
-from autogpt.models.action_history import (
-    Action,
-    ActionErrorResult,
-    ActionInterruptedByHuman,
-    ActionResult,
-    ActionSuccessResult,
-)
+from autogpt.models.action_history import (Action, ActionErrorResult,
+                                           ActionInterruptedByHuman,
+                                           ActionResult, ActionSuccessResult)
 from autogpt.models.command import CommandOutput
 from autogpt.models.context_item import ContextItem
+from pydantic import Field
 
 from .base import BaseAgent, BaseAgentConfiguration, BaseAgentSettings
 from .features.context import ContextMixin
 from .features.file_workspace import FileWorkspaceMixin
 from .features.watchdog import WatchdogMixin
-from .prompt_strategies.one_shot import (
-    OneShotAgentPromptConfiguration,
-    OneShotAgentPromptStrategy,
-)
-from .utils.exceptions import (
-    AgentException,
-    AgentTerminated,
-    CommandExecutionError,
-    UnknownCommandError,
-)
+from .prompt_strategies.one_shot import (OneShotAgentPromptConfiguration,
+                                         OneShotAgentPromptStrategy)
+from .utils.exceptions import (AgentException, AgentTerminated,
+                               CommandExecutionError, UnknownCommandError)
 
 logger = logging.getLogger(__name__)
 
@@ -138,11 +122,15 @@ class Agent(
                 + (
                     " BUDGET EXCEEDED! SHUT DOWN!\n\n"
                     if remaining_budget == 0
-                    else " Budget very nearly exceeded! Shut down gracefully!\n\n"
-                    if remaining_budget < 0.005
-                    else " Budget nearly exceeded. Finish up.\n\n"
-                    if remaining_budget < 0.01
-                    else ""
+                    else (
+                        " Budget very nearly exceeded! Shut down gracefully!\n\n"
+                        if remaining_budget < 0.005
+                        else (
+                            " Budget nearly exceeded. Finish up.\n\n"
+                            if remaining_budget < 0.01
+                            else ""
+                        )
+                    )
                 ),
             )
             logger.debug(budget_msg)
