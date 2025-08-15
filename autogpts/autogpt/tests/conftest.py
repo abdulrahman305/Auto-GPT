@@ -5,20 +5,18 @@ from tempfile import TemporaryDirectory
 
 import pytest
 import yaml
-from pytest_mock import MockerFixture
-
 from autogpt.agents.agent import Agent, AgentConfiguration, AgentSettings
 from autogpt.app.main import _configure_openai_provider
 from autogpt.config import AIProfile, Config, ConfigBuilder
-from autogpt.core.resource.model_providers import ChatModelProvider, OpenAIProvider
-from autogpt.file_workspace.local import (
-    FileWorkspace,
-    FileWorkspaceConfiguration,
-    LocalFileWorkspace,
-)
+from autogpt.core.resource.model_providers import (ChatModelProvider,
+                                                   OpenAIProvider)
+from autogpt.file_workspace.local import (FileWorkspace,
+                                          FileWorkspaceConfiguration,
+                                          LocalFileWorkspace)
 from autogpt.llm.api_manager import ApiManager
 from autogpt.logs.config import configure_logging
 from autogpt.models.command_registry import CommandRegistry
+from pytest_mock import MockerFixture
 
 pytest_plugins = [
     "tests.integration.agent_factory",

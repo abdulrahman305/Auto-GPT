@@ -1,11 +1,10 @@
 import json
 
 import pytest
-from googleapiclient.errors import HttpError
-
 from autogpt.agents.agent import Agent
 from autogpt.agents.utils.exceptions import ConfigurationError
 from autogpt.commands.web_search import google, safe_google_results, web_search
+from googleapiclient.errors import HttpError
 
 
 @pytest.mark.parametrize(

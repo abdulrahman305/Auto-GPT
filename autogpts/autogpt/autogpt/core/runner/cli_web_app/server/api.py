@@ -1,7 +1,6 @@
 import logging
 
 from agent_protocol import StepHandler, StepResult
-
 from autogpt.agents import Agent
 from autogpt.app.main import UserFeedback
 from autogpt.commands import COMMAND_CATEGORIES

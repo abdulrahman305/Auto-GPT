@@ -111,7 +111,9 @@ class ForgeLogger(logging.Logger):
     )
     FORMAT: str = "%(asctime)s %(name)-15s %(levelname)-8s %(message)s"
     COLOR_FORMAT: str = formatter_message(CONSOLE_FORMAT, True)
-    JSON_FORMAT: str = '{"time": "%(asctime)s", "name": "%(name)s", "level": "%(levelname)s", "message": "%(message)s"}'
+    JSON_FORMAT: str = (
+        '{"time": "%(asctime)s", "name": "%(name)s", "level": "%(levelname)s", "message": "%(message)s"}'
+    )
 
     def __init__(self, name: str, logLevel: str = "DEBUG"):
         logging.Logger.__init__(self, name, logLevel)

@@ -3,15 +3,10 @@ import logging
 import typing
 from pathlib import Path
 
-from pydantic import SecretField
-
-from autogpt.core.configuration import (
-    Configurable,
-    SystemConfiguration,
-    SystemSettings,
-    UserConfigurable,
-)
+from autogpt.core.configuration import (Configurable, SystemConfiguration,
+                                        SystemSettings, UserConfigurable)
 from autogpt.core.workspace.base import Workspace
+from pydantic import SecretField
 
 if typing.TYPE_CHECKING:
     # Cyclic import
@@ -169,9 +164,9 @@ class SimpleWorkspace(Configurable, Workspace):
 
         with (workspace_root / "agent_settings.json").open("w") as f:
             settings_json = settings.json(
-                encoder=lambda x: x.get_secret_value()
-                if isinstance(x, SecretField)
-                else x,
+                encoder=lambda x: (
+                    x.get_secret_value() if isinstance(x, SecretField) else x
+                ),
             )
             f.write(settings_json)
 
