@@ -6,11 +6,10 @@ from pathlib import Path
 from typing import Any, Optional
 
 import click
-from click_default_group import DefaultGroup
-from dotenv import load_dotenv
-
 from agbenchmark.config import AgentBenchmarkConfig
 from agbenchmark.utils.logging import configure_logging
+from click_default_group import DefaultGroup
+from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -188,7 +187,6 @@ def run(
 def serve(port: Optional[int] = None):
     """Serve the benchmark frontend and API on port 8080."""
     import uvicorn
-
     from agbenchmark.app import setup_fastapi_app
 
     config = AgentBenchmarkConfig.load()

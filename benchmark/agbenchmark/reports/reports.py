@@ -4,10 +4,10 @@ import os
 from pathlib import Path
 
 import pytest
-
 from agbenchmark.challenges import ChallengeInfo
 from agbenchmark.config import AgentBenchmarkConfig
-from agbenchmark.reports.processing.report_types import Test, TestMetrics, TestResult
+from agbenchmark.reports.processing.report_types import (Test, TestMetrics,
+                                                         TestResult)
 from agbenchmark.reports.ReportManager import SingletonReportManager
 from agbenchmark.utils.data_types import DifficultyLevel
 

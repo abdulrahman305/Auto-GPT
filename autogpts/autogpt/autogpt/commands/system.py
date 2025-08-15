@@ -6,7 +6,8 @@ import logging
 from typing import TYPE_CHECKING
 
 from autogpt.agents.features.context import get_agent_context
-from autogpt.agents.utils.exceptions import AgentTerminated, InvalidArgumentError
+from autogpt.agents.utils.exceptions import (AgentTerminated,
+                                             InvalidArgumentError)
 from autogpt.command_decorator import command
 from autogpt.core.utils.json_schema import JSONSchema
 

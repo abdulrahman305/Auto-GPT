@@ -3,15 +3,12 @@ from __future__ import annotations
 import logging
 from typing import List, Optional
 
-from openai import OpenAI
-from openai.types import Model
-
-from autogpt.core.resource.model_providers.openai import (
-    OPEN_AI_MODELS,
-    OpenAICredentials,
-)
+from autogpt.core.resource.model_providers.openai import (OPEN_AI_MODELS,
+                                                          OpenAICredentials)
 from autogpt.core.resource.model_providers.schema import ChatModelInfo
 from autogpt.singleton import Singleton
+from openai import OpenAI
+from openai.types import Model
 
 logger = logging.getLogger(__name__)
 

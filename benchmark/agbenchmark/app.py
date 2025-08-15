@@ -12,23 +12,21 @@ from typing import Optional
 
 import httpx
 import psutil
-from agent_protocol_client import AgentApi, ApiClient, ApiException, Configuration
+from agbenchmark.challenges import ChallengeInfo
+from agbenchmark.config import AgentBenchmarkConfig
+from agbenchmark.reports.processing.report_types_v2 import (BenchmarkRun,
+                                                            Metrics,
+                                                            RepositoryInfo,
+                                                            RunDetails,
+                                                            TaskInfo)
+from agbenchmark.schema import TaskEvalRequestBody
+from agbenchmark.utils.utils import write_pretty_json
+from agent_protocol_client import (AgentApi, ApiClient, ApiException,
+                                   Configuration)
 from agent_protocol_client.models import Task, TaskRequestBody
 from fastapi import APIRouter, FastAPI, HTTPException, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Extra, ValidationError
-
-from agbenchmark.challenges import ChallengeInfo
-from agbenchmark.config import AgentBenchmarkConfig
-from agbenchmark.reports.processing.report_types_v2 import (
-    BenchmarkRun,
-    Metrics,
-    RepositoryInfo,
-    RunDetails,
-    TaskInfo,
-)
-from agbenchmark.schema import TaskEvalRequestBody
-from agbenchmark.utils.utils import write_pretty_json
 
 sys.path.append(str(Path(__file__).parent.parent))
 

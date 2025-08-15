@@ -24,6 +24,7 @@ Demo made by <a href=https://twitter.com/BlakeWerlinger>Blake Werlinger</a>
 <!-- - 💾 Long-term and short-term memory management -->
 
 ## Setting up AutoGPT
+
 1. Get an OpenAI [API Key](https://platform.openai.com/account/api-keys)
 2. Copy `.env.template` to `.env` and set `OPENAI_API_KEY`
 3. Make sure you have Poetry [installed](https://python-poetry.org/docs/#installation)
@@ -32,7 +33,9 @@ For more ways to run AutoGPT, more detailed instructions, and more configuration
 see the [setup guide][docs/setup].
 
 ## Running AutoGPT
+
 The CLI should be self-documenting:
+
 ```shell
 $ ./autogpt.sh --help
 Usage: python -m autogpt [OPTIONS] COMMAND [ARGS]...
@@ -44,6 +47,7 @@ Commands:
   run    Sets up and runs an agent, based on the task specified by the...
   serve  Starts an Agent Protocol compliant AutoGPT server, which creates...
 ```
+
 When run without a sub-command, it will default to `run` for legacy reasons.
 
 <details>
@@ -100,8 +104,8 @@ Options:
                                   directives instead of being appended to them
   --help                          Show this message and exit.
 ```
-</details>
 
+</details>
 
 <details>
 <summary>
@@ -132,6 +136,7 @@ Options:
                               plugins.
   --help                      Show this message and exit.
 ```
+
 </details>
 
 With `serve`, the application exposes an Agent Protocol compliant API and serves a frontend,
@@ -145,9 +150,10 @@ For more comprehensive instructions, see the [user guide][docs/usage].
 [docs/plugins]: https://docs.agpt.co/autogpt/plugins
 
 ## 📚 Resources
-* 📔 AutoGPT [team wiki](https://github.com/Significant-Gravitas/Nexus/wiki)
-* 🧮 AutoGPT [project kanban](https://github.com/orgs/Significant-Gravitas/projects/1)
-* 🌃 AutoGPT [roadmap](https://github.com/orgs/Significant-Gravitas/projects/2)
+
+- 📔 AutoGPT [team wiki](https://github.com/Significant-Gravitas/Nexus/wiki)
+- 🧮 AutoGPT [project kanban](https://github.com/orgs/Significant-Gravitas/projects/1)
+- 🌃 AutoGPT [roadmap](https://github.com/orgs/Significant-Gravitas/projects/2)
 
 ## ⚠️ Limitations
 

@@ -14,17 +14,12 @@ if TYPE_CHECKING:
 
 from autogpt.agents.utils.exceptions import InvalidAgentResponseError
 from autogpt.config import AIDirectives, AIProfile
-from autogpt.core.configuration.schema import SystemConfiguration, UserConfigurable
-from autogpt.core.prompting import (
-    ChatPrompt,
-    LanguageModelClassification,
-    PromptStrategy,
-)
+from autogpt.core.configuration.schema import (SystemConfiguration,
+                                               UserConfigurable)
+from autogpt.core.prompting import (ChatPrompt, LanguageModelClassification,
+                                    PromptStrategy)
 from autogpt.core.resource.model_providers.schema import (
-    AssistantChatMessage,
-    ChatMessage,
-    CompletionModelFunction,
-)
+    AssistantChatMessage, ChatMessage, CompletionModelFunction)
 from autogpt.core.utils.json_schema import JSONSchema
 from autogpt.json_utils.utilities import extract_dict_from_response
 from autogpt.prompts.utils import format_numbered_list, indent

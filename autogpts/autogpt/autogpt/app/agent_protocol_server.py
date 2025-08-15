@@ -5,27 +5,6 @@ from io import BytesIO
 from uuid import uuid4
 
 import orjson
-from fastapi import APIRouter, FastAPI, UploadFile
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import RedirectResponse, StreamingResponse
-from fastapi.staticfiles import StaticFiles
-from forge.sdk.db import AgentDB
-from forge.sdk.errors import NotFoundError
-from forge.sdk.middlewares import AgentMiddleware
-from forge.sdk.model import (
-    Artifact,
-    Step,
-    StepRequestBody,
-    Task,
-    TaskArtifactsListResponse,
-    TaskListResponse,
-    TaskRequestBody,
-    TaskStepsListResponse,
-)
-from forge.sdk.routes.agent_protocol import base_router
-from hypercorn.asyncio import serve as hypercorn_serve
-from hypercorn.config import Config as HypercornConfig
-
 from autogpt.agent_factory.configurators import configure_agent_with_state
 from autogpt.agent_factory.generators import generate_agent_for_task
 from autogpt.agent_manager import AgentManager
@@ -35,13 +14,24 @@ from autogpt.config import Config
 from autogpt.core.resource.model_providers import ChatModelProvider
 from autogpt.core.resource.model_providers.openai import OpenAIProvider
 from autogpt.core.resource.model_providers.schema import ModelProviderBudget
-from autogpt.file_workspace import (
-    FileWorkspace,
-    FileWorkspaceBackendName,
-    get_workspace,
-)
+from autogpt.file_workspace import (FileWorkspace, FileWorkspaceBackendName,
+                                    get_workspace)
 from autogpt.logs.utils import fmt_kwargs
-from autogpt.models.action_history import ActionErrorResult, ActionSuccessResult
+from autogpt.models.action_history import (ActionErrorResult,
+                                           ActionSuccessResult)
+from fastapi import APIRouter, FastAPI, UploadFile
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import RedirectResponse, StreamingResponse
+from fastapi.staticfiles import StaticFiles
+from forge.sdk.db import AgentDB
+from forge.sdk.errors import NotFoundError
+from forge.sdk.middlewares import AgentMiddleware
+from forge.sdk.model import (Artifact, Step, StepRequestBody, Task,
+                             TaskArtifactsListResponse, TaskListResponse,
+                             TaskRequestBody, TaskStepsListResponse)
+from forge.sdk.routes.agent_protocol import base_router
+from hypercorn.asyncio import serve as hypercorn_serve
+from hypercorn.config import Config as HypercornConfig
 
 logger = logging.getLogger(__name__)
 
@@ -432,13 +422,15 @@ class AgentProtocolServer:
         workspace = get_workspace(
             backend=self.app_config.workspace_backend,
             id=agent_id if not use_local_ws else "",
-            root_path=agent_manager.get_agent_dir(
-                agent_id=agent_id,
-                must_exist=True,
-            )
-            / "workspace"
-            if use_local_ws
-            else None,
+            root_path=(
+                agent_manager.get_agent_dir(
+                    agent_id=agent_id,
+                    must_exist=True,
+                )
+                / "workspace"
+                if use_local_ws
+                else None
+            ),
         )
         workspace.initialize()
         return workspace
