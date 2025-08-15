@@ -10,7 +10,6 @@ Hey there! Ready for part 3 of our AutoGPT Forge tutorial series? If you missed 
 
 Now, let's get hands-on! We'll use an LLM to power our agent and complete a task. The challenge? Making the agent write "Washington" to a .txt file. We won't give it step-by-step instructions—just the task. Let's see our agent in action and watch it figure out the steps on its own!
 
-
 ## Get Your Smart Agent Project Ready
 
 Make sure you've set up your project and created an agent as described in our initial guide. If you skipped that part, [click here](#) to get started. Once you're done, come back, and we'll move forward.
@@ -64,7 +63,7 @@ async def execute_step(self, task_id: str, step_request: StepRequestBody) -> Ste
           relative_path="",
           agent_created=True,
       )
-      
+
       step.output = "Washington D.C"
 
       LOG.info(f"\t✅ Final Step completed: {step.step_id}")
@@ -122,8 +121,7 @@ Now that we've set this up, let's move to the next exciting part: The PromptEngi
 
 ---
 
-
-**The Art of Prompting**  
+**The Art of Prompting**
 
 ![Prompting 101](../../../docs/content/imgs/quickstart/t3_03.png)
 
@@ -161,8 +159,6 @@ task_kwargs = {
 # Load the task prompt with those parameters
 task_prompt = prompt_engine.load_prompt("task-step", **task_kwargs)
 ```
-
-
 
 Delving deeper, let's look at the `task-step` prompt template in `prompts/gpt-3.5-turbo/task-step.j2`:
 
@@ -259,7 +255,6 @@ Extracting clear messages from LLM outputs can be complex. Our method is simple 
 
 ---
 
-
 ## Using and Creating Abilities
 
 Abilities are the gears and levers that enable the agent to interact with tasks at hand. Let's unpack the mechanisms behind these abilities and how you can harness, and even extend, them.
@@ -325,7 +320,7 @@ This ability, `fetch_webpage`, accepts a URL as input and returns the HTML conte
 
 ## Running an Ability
 
-Now that you understand abilities and how to create them, let's use them. The last piece is the `execute_step` function. Our goal is to understand the agent's response, find the ability, and use it. 
+Now that you understand abilities and how to create them, let's use them. The last piece is the `execute_step` function. Our goal is to understand the agent's response, find the ability, and use it.
 
 First, we get the ability details from the agent's answer:
 
@@ -432,44 +427,48 @@ async def execute_step(self, task_id: str, step_request: StepRequestBody) -> Ste
 ```
 
 ## Interacting with your Agent
+
 > ⚠️ Heads up: The UI and benchmark are still in the oven, so they might be a tad glitchy.
 
 With the heavy lifting of crafting our Smart Agent behind us, it’s high time to see it in action. Kick things off by firing up the agent with this command:
+
 ```bash
 ./run agent start SmartAgent.
 ```
 
 Once your digital playground is all set, your terminal should light up with:
+
 ```bash
 
 
-       d8888          888             .d8888b.  8888888b. 88888888888 
-      d88888          888            d88P  Y88b 888   Y88b    888     
-     d88P888          888            888    888 888    888    888     
-    d88P 888 888  888 888888 .d88b.  888        888   d88P    888     
-   d88P  888 888  888 888   d88""88b 888  88888 8888888P"     888     
-  d88P   888 888  888 888   888  888 888    888 888           888     
- d8888888888 Y88b 888 Y88b. Y88..88P Y88b  d88P 888           888     
-d88P     888  "Y88888  "Y888 "Y88P"   "Y8888P88 888           888     
-                                                                      
-                                                                      
-                                                                      
-                8888888888                                            
-                888                                                   
-                888                                                   
-                8888888  .d88b.  888d888 .d88b.   .d88b.              
-                888     d88""88b 888P"  d88P"88b d8P  Y8b             
-                888     888  888 888    888  888 88888888             
-                888     Y88..88P 888    Y88b 888 Y8b.                 
-                888      "Y88P"  888     "Y88888  "Y8888              
-                                             888                      
-                                        Y8b d88P                      
+       d8888          888             .d8888b.  8888888b. 88888888888
+      d88888          888            d88P  Y88b 888   Y88b    888
+     d88P888          888            888    888 888    888    888
+    d88P 888 888  888 888888 .d88b.  888        888   d88P    888
+   d88P  888 888  888 888   d88""88b 888  88888 8888888P"     888
+  d88P   888 888  888 888   888  888 888    888 888           888
+ d8888888888 Y88b 888 Y88b. Y88..88P Y88b  d88P 888           888
+d88P     888  "Y88888  "Y888 "Y88P"   "Y8888P88 888           888
+
+
+
+                8888888888
+                888
+                888
+                8888888  .d88b.  888d888 .d88b.   .d88b.
+                888     d88""88b 888P"  d88P"88b d8P  Y8b
+                888     888  888 888    888  888 88888888
+                888     Y88..88P 888    Y88b 888 Y8b.
+                888      "Y88P"  888     "Y88888  "Y8888
+                                             888
+                                        Y8b d88P
                                          "Y88P"                v0.1.0
 
 
 [2023-09-27 15:39:07,832] [forge.sdk.agent] [INFO]      📝  Agent server starting on http://localhost:8000
 
 ```
+
 1. **Get Started**
    - Click the link to access the AutoGPT Agent UI.
 
@@ -478,7 +477,7 @@ d88P     888  "Y88888  "Y888 "Y88P"   "Y8888P88 888           888
 
 3. **Navigate to Benchmarking**
    - Look to the left, and you'll spot a trophy icon. Click it to enter the benchmarking arena.
-  
+
 ![Benchmarking page of the AutoGPT UI](../../../docs/content/imgs/quickstart/t3_04.png)
 
 4. **Select the 'WriteFile' Test**
@@ -492,22 +491,27 @@ d88P     888  "Y88888  "Y888 "Y88P"   "Y8888P88 888           888
 
 7. **Check the Console**
    - For additional information, you can also monitor your console for progress updates and messages.
+
 ```bash
 📝  📦 Task created: 70518b75-0104-49b0-923e-f607719d042b input: Write the word 'Washington' to a .txt fi...
 📝      ✅ Final Step completed: a736c45f-65a5-4c44-a697-f1d6dcd94d5c input: y
 ```
+
 If you see this, you've done it!
 
 8. **Troubleshooting**
    - If you encounter any issues or see cryptic error messages, don't worry. Just hit the retry button. Remember, LLMs are powerful but may occasionally need some guidance.
 
 ## Wrap Up
+
 - Stay tuned for our next tutorial, where we'll enhance the agent's capabilities by adding memory!
 
 ## Keep Exploring
+
 - Keep experimenting and pushing the boundaries of AI. Happy coding! 🚀
 
 ## Wrap Up
+
 In our next tutorial, we’ll further refine this process, enhancing the agent’s capabilities, through the addition of memory!
 
 Until then, keep experimenting and pushing the boundaries of AI. Happy coding! 🚀

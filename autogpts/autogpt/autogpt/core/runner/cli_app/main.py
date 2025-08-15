@@ -1,16 +1,11 @@
 import click
-
 from autogpt.core.agent import AgentSettings, SimpleAgent
-from autogpt.core.runner.client_lib.logging import (
-    configure_root_logger,
-    get_client_logger,
-)
-from autogpt.core.runner.client_lib.parser import (
-    parse_ability_result,
-    parse_agent_name_and_goals,
-    parse_agent_plan,
-    parse_next_ability,
-)
+from autogpt.core.runner.client_lib.logging import (configure_root_logger,
+                                                    get_client_logger)
+from autogpt.core.runner.client_lib.parser import (parse_ability_result,
+                                                   parse_agent_name_and_goals,
+                                                   parse_agent_plan,
+                                                   parse_next_ability)
 
 
 async def run_auto_gpt(user_configuration: dict):

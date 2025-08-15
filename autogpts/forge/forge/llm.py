@@ -1,6 +1,7 @@
 from pathlib import Path
 
-from litellm import AuthenticationError, InvalidRequestError, ModelResponse, acompletion
+from litellm import (AuthenticationError, InvalidRequestError, ModelResponse,
+                     acompletion)
 from openai import OpenAI
 from openai.types import CreateEmbeddingResponse
 from openai.types.audio import Transcription
