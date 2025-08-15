@@ -2,10 +2,9 @@ import logging
 from pathlib import Path
 
 import yaml
-from pydantic import BaseModel, Field
-
 from autogpt.logs.helpers import request_user_double_check
 from autogpt.utils import validate_yaml_file
+from pydantic import BaseModel, Field
 
 logger = logging.getLogger(__name__)
 

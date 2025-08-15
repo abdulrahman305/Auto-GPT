@@ -1,10 +1,10 @@
 import logging
 from typing import Callable
 
-from pydantic import BaseModel, Field
-
-from autogpt.core.resource.model_providers.schema import CompletionModelFunction
+from autogpt.core.resource.model_providers.schema import \
+    CompletionModelFunction
 from autogpt.core.utils.json_schema import JSONSchema
+from pydantic import BaseModel, Field
 
 logger = logging.getLogger("PromptScratchpad")
 
@@ -71,9 +71,11 @@ class PromptScratchpad(BaseModel):
             name=name,
             description=description,
             parameters={
-                name: JSONSchema(type=JSONSchema.Type._value2member_map_[spec])
-                if type(spec) is str
-                else JSONSchema.from_dict(spec)
+                name: (
+                    JSONSchema(type=JSONSchema.Type._value2member_map_[spec])
+                    if type(spec) is str
+                    else JSONSchema.from_dict(spec)
+                )
                 for name, spec in params.items()
             },
             method=function,

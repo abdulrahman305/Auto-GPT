@@ -1,12 +1,8 @@
 from importlib import import_module
 from typing import TYPE_CHECKING
 
-from autogpt.core.plugin.base import (
-    PluginLocation,
-    PluginService,
-    PluginStorageFormat,
-    PluginStorageRoute,
-)
+from autogpt.core.plugin.base import (PluginLocation, PluginService,
+                                      PluginStorageFormat, PluginStorageRoute)
 
 if TYPE_CHECKING:
     from autogpt.core.plugin.base import PluginType

@@ -1,4 +1,4 @@
-""" Constants for this module. """
+"""Constants for this module."""
 
 # The name of the marker used
 MARKER_NAME = "depends"

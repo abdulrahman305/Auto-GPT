@@ -4,9 +4,8 @@ from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import Optional
 
-from pydantic import BaseModel, Field
-
 from autogpt.commands.file_operations_utils import decode_textual_file
+from pydantic import BaseModel, Field
 
 logger = logging.getLogger(__name__)
 

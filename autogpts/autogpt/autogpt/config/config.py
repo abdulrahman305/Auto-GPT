@@ -1,4 +1,5 @@
 """Configuration class to store the state of bools for different scripts access."""
+
 from __future__ import annotations
 
 import os
@@ -6,24 +7,18 @@ import re
 from pathlib import Path
 from typing import Any, Optional, Union
 
-from auto_gpt_plugin_template import AutoGPTPluginTemplate
-from colorama import Fore
-from pydantic import Field, SecretStr, validator
-
 import autogpt
-from autogpt.core.configuration.schema import (
-    Configurable,
-    SystemSettings,
-    UserConfigurable,
-)
-from autogpt.core.resource.model_providers.openai import (
-    OPEN_AI_CHAT_MODELS,
-    OpenAICredentials,
-)
+from auto_gpt_plugin_template import AutoGPTPluginTemplate
+from autogpt.core.configuration.schema import (Configurable, SystemSettings,
+                                               UserConfigurable)
+from autogpt.core.resource.model_providers.openai import (OPEN_AI_CHAT_MODELS,
+                                                          OpenAICredentials)
 from autogpt.file_workspace import FileWorkspaceBackendName
 from autogpt.logs.config import LoggingConfig
 from autogpt.plugins.plugins_config import PluginsConfig
 from autogpt.speech import TTSConfig
+from colorama import Fore
+from pydantic import Field, SecretStr, validator
 
 PROJECT_ROOT = Path(autogpt.__file__).parent.parent
 AI_SETTINGS_FILE = Path("ai_settings.yaml")
@@ -60,9 +55,11 @@ class Config(SystemSettings, arbitrary_types_allowed=True):
     # Workspace
     workspace_backend: FileWorkspaceBackendName = UserConfigurable(
         default=FileWorkspaceBackendName.LOCAL,
-        from_env=lambda: FileWorkspaceBackendName(v)
-        if (v := os.getenv("WORKSPACE_BACKEND"))
-        else None,
+        from_env=lambda: (
+            FileWorkspaceBackendName(v)
+            if (v := os.getenv("WORKSPACE_BACKEND"))
+            else None
+        ),
     )
 
     ##########################

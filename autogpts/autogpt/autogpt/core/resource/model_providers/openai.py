@@ -8,35 +8,20 @@ from typing import Callable, Coroutine, Iterator, Optional, ParamSpec, TypeVar
 import tenacity
 import tiktoken
 import yaml
+from autogpt.core.configuration import Configurable, UserConfigurable
+from autogpt.core.resource.model_providers.schema import (
+    AssistantChatMessage, AssistantToolCall, AssistantToolCallDict,
+    ChatMessage, ChatModelInfo, ChatModelProvider, ChatModelResponse,
+    CompletionModelFunction, Embedding, EmbeddingModelInfo,
+    EmbeddingModelProvider, EmbeddingModelResponse, ModelProviderBudget,
+    ModelProviderConfiguration, ModelProviderCredentials, ModelProviderName,
+    ModelProviderService, ModelProviderSettings, ModelProviderUsage,
+    ModelTokenizer)
+from autogpt.core.utils.json_schema import JSONSchema
 from openai._exceptions import APIStatusError, RateLimitError
 from openai.types import CreateEmbeddingResponse
 from openai.types.chat import ChatCompletion
 from pydantic import SecretStr
-
-from autogpt.core.configuration import Configurable, UserConfigurable
-from autogpt.core.resource.model_providers.schema import (
-    AssistantChatMessage,
-    AssistantToolCall,
-    AssistantToolCallDict,
-    ChatMessage,
-    ChatModelInfo,
-    ChatModelProvider,
-    ChatModelResponse,
-    CompletionModelFunction,
-    Embedding,
-    EmbeddingModelInfo,
-    EmbeddingModelProvider,
-    EmbeddingModelResponse,
-    ModelProviderBudget,
-    ModelProviderConfiguration,
-    ModelProviderCredentials,
-    ModelProviderName,
-    ModelProviderService,
-    ModelProviderSettings,
-    ModelProviderUsage,
-    ModelTokenizer,
-)
-from autogpt.core.utils.json_schema import JSONSchema
 
 _T = TypeVar("_T")
 _P = ParamSpec("_P")

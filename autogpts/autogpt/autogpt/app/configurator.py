@@ -1,4 +1,5 @@
 """Configurator module."""
+
 from __future__ import annotations
 
 import logging
@@ -6,8 +7,6 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Literal, Optional
 
 import click
-from colorama import Back, Fore, Style
-
 from autogpt import utils
 from autogpt.config import Config
 from autogpt.config.config import GPT_3_MODEL, GPT_4_MODEL
@@ -15,6 +14,7 @@ from autogpt.llm.api_manager import ApiManager
 from autogpt.logs.config import LogFormatName
 from autogpt.logs.helpers import request_user_double_check
 from autogpt.memory.vector import get_supported_memory_backends
+from colorama import Back, Fore, Style
 
 if TYPE_CHECKING:
     from autogpt.core.resource.model_providers.openai import OpenAICredentials
