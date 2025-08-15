@@ -6,12 +6,11 @@ import json
 import time
 from itertools import islice
 
-from duckduckgo_search import DDGS
-
 from autogpt.agents.agent import Agent
 from autogpt.agents.utils.exceptions import ConfigurationError
 from autogpt.command_decorator import command
 from autogpt.core.utils.json_schema import JSONSchema
+from duckduckgo_search import DDGS
 
 COMMAND_CATEGORY = "web_search"
 COMMAND_CATEGORY_TITLE = "Web Search"

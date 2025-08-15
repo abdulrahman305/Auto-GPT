@@ -8,6 +8,13 @@ from pathlib import Path
 from sys import platform
 from typing import TYPE_CHECKING, Optional, Type
 
+from autogpt.agents.utils.exceptions import (CommandExecutionError,
+                                             TooMuchOutputError)
+from autogpt.command_decorator import command
+from autogpt.core.utils.json_schema import JSONSchema
+from autogpt.processing.html import extract_hyperlinks, format_hyperlinks
+from autogpt.processing.text import extract_information, summarize_text
+from autogpt.url_utils.validators import validate_url
 from bs4 import BeautifulSoup
 from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.chrome.options import Options as ChromeOptions
@@ -28,14 +35,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
-from webdriver_manager.microsoft import EdgeChromiumDriverManager as EdgeDriverManager
-
-from autogpt.agents.utils.exceptions import CommandExecutionError, TooMuchOutputError
-from autogpt.command_decorator import command
-from autogpt.core.utils.json_schema import JSONSchema
-from autogpt.processing.html import extract_hyperlinks, format_hyperlinks
-from autogpt.processing.text import extract_information, summarize_text
-from autogpt.url_utils.validators import validate_url
+from webdriver_manager.microsoft import \
+    EdgeChromiumDriverManager as EdgeDriverManager
 
 COMMAND_CATEGORY = "web_browse"
 COMMAND_CATEGORY_TITLE = "Web Browsing"
@@ -264,9 +265,11 @@ def open_page_in_browser(url: str, config: Config) -> WebDriver:
         chromium_driver_path = Path("/usr/bin/chromedriver")
 
         driver = ChromeDriver(
-            service=ChromeDriverService(str(chromium_driver_path))
-            if chromium_driver_path.exists()
-            else ChromeDriverService(ChromeDriverManager().install()),
+            service=(
+                ChromeDriverService(str(chromium_driver_path))
+                if chromium_driver_path.exists()
+                else ChromeDriverService(ChromeDriverManager().install())
+            ),
             options=options,
         )
     driver.get(url)

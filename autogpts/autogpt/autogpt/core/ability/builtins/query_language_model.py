@@ -5,12 +5,10 @@ from autogpt.core.ability.base import Ability, AbilityConfiguration
 from autogpt.core.ability.schema import AbilityResult
 from autogpt.core.planning.simple import LanguageModelConfiguration
 from autogpt.core.plugin.simple import PluginLocation, PluginStorageFormat
-from autogpt.core.resource.model_providers import (
-    ChatMessage,
-    ChatModelProvider,
-    ModelProviderName,
-    OpenAIModelName,
-)
+from autogpt.core.resource.model_providers import (ChatMessage,
+                                                   ChatModelProvider,
+                                                   ModelProviderName,
+                                                   OpenAIModelName)
 from autogpt.core.utils.json_schema import JSONSchema
 
 

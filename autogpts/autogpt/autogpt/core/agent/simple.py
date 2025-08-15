@@ -3,28 +3,21 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-from pydantic import BaseModel
-
-from autogpt.core.ability import (
-    AbilityRegistrySettings,
-    AbilityResult,
-    SimpleAbilityRegistry,
-)
+from autogpt.core.ability import (AbilityRegistrySettings, AbilityResult,
+                                  SimpleAbilityRegistry)
 from autogpt.core.agent.base import Agent
-from autogpt.core.configuration import Configurable, SystemConfiguration, SystemSettings
+from autogpt.core.configuration import (Configurable, SystemConfiguration,
+                                        SystemSettings)
 from autogpt.core.memory import MemorySettings, SimpleMemory
-from autogpt.core.planning import PlannerSettings, SimplePlanner, Task, TaskStatus
-from autogpt.core.plugin.simple import (
-    PluginLocation,
-    PluginStorageFormat,
-    SimplePluginService,
-)
-from autogpt.core.resource.model_providers import (
-    CompletionModelFunction,
-    OpenAIProvider,
-    OpenAISettings,
-)
+from autogpt.core.planning import (PlannerSettings, SimplePlanner, Task,
+                                   TaskStatus)
+from autogpt.core.plugin.simple import (PluginLocation, PluginStorageFormat,
+                                        SimplePluginService)
+from autogpt.core.resource.model_providers import (CompletionModelFunction,
+                                                   OpenAIProvider,
+                                                   OpenAISettings)
 from autogpt.core.workspace.simple import SimpleWorkspace, WorkspaceSettings
+from pydantic import BaseModel
 
 
 class AgentSystems(SystemConfiguration):
