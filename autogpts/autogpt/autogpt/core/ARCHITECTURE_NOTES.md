@@ -239,16 +239,16 @@ There are three kinds of things (roughly) that are written as classes in the re-
     important for us being able to put representations of agents
     [on the wire](https://en.wikipedia.org/wiki/Wire_protocol) for web applications and
     agent-to-agent communication. _These are essentially
-    [structs](<https://en.wikipedia.org/wiki/Struct_(C_programming_language)>) rather than
-    traditional classes._
+    [structs](<https://en.wikipedia.org/wiki/Struct_(C*programming_language)>) rather than
+    traditional classes.*
 2.  **Internal Data**: Very similar to configuration, AutoGPT passes around boatloads
     of internal data. We are interacting with language models and language model APIs
     which means we are handling lots of _structured_ but _raw_ text. Here we also
     leverage **pydantic** to both _parse_ and _validate_ the internal data and also to
     give us concrete types which we can use static type checkers to validate against
     and discover problems before they show up as bugs at runtime. _These are
-    essentially [structs](<https://en.wikipedia.org/wiki/Struct_(C_programming_language)>)
-    rather than traditional classes._
+    essentially [structs](<https://en.wikipedia.org/wiki/Struct_(C*programming_language)>)
+    rather than traditional classes.*
 3.  **System Interfaces**: This is our primary traditional use of classes in the
     re-arch. We have a bunch of systems. We want many of those systems to have
     alternative implementations (e.g. via plugins). We use abstract base classes to
