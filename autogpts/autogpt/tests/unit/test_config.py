@@ -2,18 +2,19 @@
 Test cases for the config class, which handles the configuration settings
 for the AI and ensures it behaves as a singleton.
 """
+
 import os
 from typing import Any
 from unittest import mock
 from unittest.mock import patch
 
 import pytest
+from autogpt.app.configurator import (GPT_3_MODEL, GPT_4_MODEL,
+                                      apply_overrides_to_config)
+from autogpt.config import Config, ConfigBuilder
 from openai.pagination import SyncPage
 from openai.types import Model
 from pydantic import SecretStr
-
-from autogpt.app.configurator import GPT_3_MODEL, GPT_4_MODEL, apply_overrides_to_config
-from autogpt.config import Config, ConfigBuilder
 
 
 def test_initial_values(config: Config) -> None:

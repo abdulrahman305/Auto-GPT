@@ -1,4 +1,5 @@
-""" Text to speech module """
+"""Text to speech module"""
+
 from __future__ import annotations
 
 import os
@@ -6,7 +7,8 @@ import threading
 from threading import Semaphore
 from typing import Literal, Optional
 
-from autogpt.core.configuration.schema import SystemConfiguration, UserConfigurable
+from autogpt.core.configuration.schema import (SystemConfiguration,
+                                               UserConfigurable)
 
 from .base import VoiceBase
 from .eleven_labs import ElevenLabsConfig, ElevenLabsSpeech
@@ -31,11 +33,11 @@ class TTSConfig(SystemConfiguration):
         or (
             "macos"
             if os.getenv("USE_MAC_OS_TTS")
-            else "elevenlabs"
-            if os.getenv("ELEVENLABS_API_KEY")
-            else "streamelements"
-            if os.getenv("USE_BRIAN_TTS")
-            else "gtts"
+            else (
+                "elevenlabs"
+                if os.getenv("ELEVENLABS_API_KEY")
+                else "streamelements" if os.getenv("USE_BRIAN_TTS") else "gtts"
+            )
         ),
     )  # type: ignore
 

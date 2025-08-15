@@ -2,13 +2,12 @@
 
 from pathlib import Path
 
-from git.repo import Repo
-
 from autogpt.agents.agent import Agent
 from autogpt.agents.utils.exceptions import CommandExecutionError
 from autogpt.command_decorator import command
 from autogpt.core.utils.json_schema import JSONSchema
 from autogpt.url_utils.validators import validate_url
+from git.repo import Repo
 
 from .decorators import sanitize_path_arg
 

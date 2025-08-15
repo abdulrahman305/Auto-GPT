@@ -13,16 +13,9 @@ from .db import AgentDB
 from .errors import NotFoundError
 from .forge_log import ForgeLogger
 from .middlewares import AgentMiddleware
-from .model import (
-    Artifact,
-    Step,
-    StepRequestBody,
-    Task,
-    TaskArtifactsListResponse,
-    TaskListResponse,
-    TaskRequestBody,
-    TaskStepsListResponse,
-)
+from .model import (Artifact, Step, StepRequestBody, Task,
+                    TaskArtifactsListResponse, TaskListResponse,
+                    TaskRequestBody, TaskStepsListResponse)
 from .routes.agent_protocol import base_router
 from .workspace import Workspace
 
