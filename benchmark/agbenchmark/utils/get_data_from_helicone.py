@@ -4,7 +4,6 @@ import os
 from typing import Optional
 
 import requests
-
 from agbenchmark.__main__ import BENCHMARK_START_TIME
 from agbenchmark.agent_interface import HELICONE_GRAPHQL_LOGS
 

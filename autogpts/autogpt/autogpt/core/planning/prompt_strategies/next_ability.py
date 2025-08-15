@@ -3,13 +3,12 @@ import logging
 from autogpt.core.configuration import SystemConfiguration, UserConfigurable
 from autogpt.core.planning.schema import Task
 from autogpt.core.prompting import PromptStrategy
-from autogpt.core.prompting.schema import ChatPrompt, LanguageModelClassification
+from autogpt.core.prompting.schema import (ChatPrompt,
+                                           LanguageModelClassification)
 from autogpt.core.prompting.utils import json_loads, to_numbered_list
-from autogpt.core.resource.model_providers import (
-    AssistantChatMessage,
-    ChatMessage,
-    CompletionModelFunction,
-)
+from autogpt.core.resource.model_providers import (AssistantChatMessage,
+                                                   ChatMessage,
+                                                   CompletionModelFunction)
 from autogpt.core.utils.json_schema import JSONSchema
 
 logger = logging.getLogger(__name__)

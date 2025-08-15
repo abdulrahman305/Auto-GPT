@@ -10,10 +10,10 @@ from typing import Any
 
 from agbenchmark.config import AgentBenchmarkConfig
 from agbenchmark.reports.processing.graphs import save_single_radar_chart
-from agbenchmark.reports.processing.process_report import (
-    get_highest_achieved_difficulty_per_category,
-)
-from agbenchmark.reports.processing.report_types import MetricsOverall, Report, Test
+from agbenchmark.reports.processing.process_report import \
+    get_highest_achieved_difficulty_per_category
+from agbenchmark.reports.processing.report_types import (MetricsOverall,
+                                                         Report, Test)
 from agbenchmark.utils.utils import get_highest_success_difficulty
 
 logger = logging.getLogger(__name__)

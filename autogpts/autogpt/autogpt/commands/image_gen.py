@@ -9,12 +9,11 @@ from base64 import b64decode
 from pathlib import Path
 
 import requests
-from openai import OpenAI
-from PIL import Image
-
 from autogpt.agents.agent import Agent
 from autogpt.command_decorator import command
 from autogpt.core.utils.json_schema import JSONSchema
+from openai import OpenAI
+from PIL import Image
 
 COMMAND_CATEGORY = "text_to_image"
 COMMAND_CATEGORY_TITLE = "Text to Image"

@@ -1,9 +1,8 @@
 import enum
 from typing import Optional
 
-from pydantic import BaseModel, Field
-
 from autogpt.core.ability.schema import AbilityResult
+from pydantic import BaseModel, Field
 
 
 class TaskType(str, enum.Enum):

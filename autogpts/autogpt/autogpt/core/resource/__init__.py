@@ -1,10 +1,6 @@
-from autogpt.core.resource.schema import (
-    ProviderBudget,
-    ProviderCredentials,
-    ProviderSettings,
-    ProviderUsage,
-    ResourceType,
-)
+from autogpt.core.resource.schema import (ProviderBudget, ProviderCredentials,
+                                          ProviderSettings, ProviderUsage,
+                                          ResourceType)
 
 __all__ = [
     "ProviderBudget",

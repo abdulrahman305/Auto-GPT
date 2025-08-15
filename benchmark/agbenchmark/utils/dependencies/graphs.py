@@ -8,10 +8,9 @@ import matplotlib.patches as patches
 import matplotlib.pyplot as plt
 import networkx as nx
 import numpy as np
-from pyvis.network import Network
-
 from agbenchmark.generate_test import DATA_CATEGORY
 from agbenchmark.utils.utils import write_pretty_json
+from pyvis.network import Network
 
 logger = logging.getLogger(__name__)
 
