@@ -6,10 +6,9 @@ import re
 from pathlib import Path
 from typing import Any, Optional
 
-from dotenv import load_dotenv
-
 from agbenchmark.reports.processing.report_types import Test
 from agbenchmark.utils.data_types import DIFFICULTY_MAP, DifficultyLevel
+from dotenv import load_dotenv
 
 load_dotenv()
 

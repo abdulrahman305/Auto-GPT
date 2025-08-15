@@ -23,21 +23,12 @@ from autogpt.agents.utils.prompt_scratchpad import PromptScratchpad
 from autogpt.config import ConfigBuilder
 from autogpt.config.ai_directives import AIDirectives
 from autogpt.config.ai_profile import AIProfile
-from autogpt.core.configuration import (
-    Configurable,
-    SystemConfiguration,
-    SystemSettings,
-    UserConfigurable,
-)
-from autogpt.core.prompting.schema import (
-    ChatMessage,
-    ChatPrompt,
-    CompletionModelFunction,
-)
-from autogpt.core.resource.model_providers.openai import (
-    OPEN_AI_CHAT_MODELS,
-    OpenAIModelName,
-)
+from autogpt.core.configuration import (Configurable, SystemConfiguration,
+                                        SystemSettings, UserConfigurable)
+from autogpt.core.prompting.schema import (ChatMessage, ChatPrompt,
+                                           CompletionModelFunction)
+from autogpt.core.resource.model_providers.openai import (OPEN_AI_CHAT_MODELS,
+                                                          OpenAIModelName)
 from autogpt.core.runner.client_lib.logging.helpers import dump_prompt
 from autogpt.llm.providers.openai import get_openai_command_specs
 from autogpt.models.action_history import ActionResult, EpisodicActionHistory
@@ -250,12 +241,14 @@ class BaseAgent(Configurable[BaseAgentSettings], ABC):
         logger.debug(f"Executing prompt:\n{dump_prompt(prompt)}")
         response = await self.llm_provider.create_chat_completion(
             prompt.messages,
-            functions=get_openai_command_specs(
-                self.command_registry.list_available_commands(self)
-            )
-            + list(self._prompt_scratchpad.commands.values())
-            if self.config.use_functions_api
-            else [],
+            functions=(
+                get_openai_command_specs(
+                    self.command_registry.list_available_commands(self)
+                )
+                + list(self._prompt_scratchpad.commands.values())
+                if self.config.use_functions_api
+                else []
+            ),
             model_name=self.llm.name,
             completion_parser=lambda r: self.parse_and_process_response(
                 r,

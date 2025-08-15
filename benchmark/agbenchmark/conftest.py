@@ -9,16 +9,13 @@ from pathlib import Path
 from typing import Generator
 
 import pytest
-
 from agbenchmark.challenges import OPTIONAL_CATEGORIES, BaseChallenge
 from agbenchmark.config import AgentBenchmarkConfig
 from agbenchmark.reports.processing.report_types import Test
 from agbenchmark.reports.ReportManager import RegressionTestsTracker
-from agbenchmark.reports.reports import (
-    add_test_result_to_report,
-    make_empty_test_report,
-    session_finish,
-)
+from agbenchmark.reports.reports import (add_test_result_to_report,
+                                         make_empty_test_report,
+                                         session_finish)
 from agbenchmark.utils.data_types import Category
 
 GLOBAL_TIMEOUT = (

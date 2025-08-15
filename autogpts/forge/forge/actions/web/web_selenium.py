@@ -14,6 +14,7 @@ from typing import TYPE_CHECKING, Any, Callable, List, Optional, Tuple, Type
 from urllib.parse import urljoin, urlparse
 
 from bs4 import BeautifulSoup
+from forge.sdk.errors import CommandExecutionError
 from requests.compat import urljoin
 from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.chrome.options import Options as ChromeOptions
@@ -34,9 +35,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
-from webdriver_manager.microsoft import EdgeChromiumDriverManager as EdgeDriverManager
-
-from forge.sdk.errors import CommandExecutionError
+from webdriver_manager.microsoft import \
+    EdgeChromiumDriverManager as EdgeDriverManager
 
 from ..registry import action
 
@@ -340,9 +340,11 @@ def open_page_in_browser(url: str) -> WebDriver:
         chromium_driver_path = Path("/usr/bin/chromedriver")
 
         driver = ChromeDriver(
-            service=ChromeDriverService(str(chromium_driver_path))
-            if chromium_driver_path.exists()
-            else ChromeDriverService(ChromeDriverManager().install()),
+            service=(
+                ChromeDriverService(str(chromium_driver_path))
+                if chromium_driver_path.exists()
+                else ChromeDriverService(ChromeDriverManager().install())
+            ),
             options=options,
         )
     driver.get(url)

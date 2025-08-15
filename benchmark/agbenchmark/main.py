@@ -3,10 +3,9 @@ import os
 from pathlib import Path
 from typing import Optional, Sequence
 
-from dotenv import load_dotenv
-
 from agbenchmark.challenges import get_unique_categories
 from agbenchmark.config import AgentBenchmarkConfig
+from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -34,7 +33,6 @@ def run_benchmark(
     corresponding mark will be run.
     """
     import pytest
-
     from agbenchmark.reports.ReportManager import SingletonReportManager
 
     validate_args(
@@ -80,9 +78,9 @@ def run_benchmark(
 
     if mock:
         # TODO: unhack
-        os.environ[
-            "IS_MOCK"
-        ] = "True"  # ugly hack to make the mock work when calling from API
+        os.environ["IS_MOCK"] = (
+            "True"  # ugly hack to make the mock work when calling from API
+        )
 
     # Pass through flags
     for flag, active in {

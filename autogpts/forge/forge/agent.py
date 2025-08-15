@@ -1,14 +1,6 @@
 from forge.actions import ActionRegister
-from forge.sdk import (
-    Agent,
-    AgentDB,
-    ForgeLogger,
-    Step,
-    StepRequestBody,
-    Task,
-    TaskRequestBody,
-    Workspace,
-)
+from forge.sdk import (Agent, AgentDB, ForgeLogger, Step, StepRequestBody,
+                       Task, TaskRequestBody, Workspace)
 
 LOG = ForgeLogger(__name__)
 

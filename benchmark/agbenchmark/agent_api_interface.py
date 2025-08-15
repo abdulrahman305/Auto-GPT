@@ -4,16 +4,10 @@ import time
 from pathlib import Path
 from typing import AsyncIterator, Optional
 
-from agent_protocol_client import (
-    AgentApi,
-    ApiClient,
-    Configuration,
-    Step,
-    TaskRequestBody,
-)
-
 from agbenchmark.agent_interface import get_list_of_file_paths
 from agbenchmark.config import AgentBenchmarkConfig
+from agent_protocol_client import (AgentApi, ApiClient, Configuration, Step,
+                                   TaskRequestBody)
 
 logger = logging.getLogger(__name__)
 
